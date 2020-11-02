@@ -2,6 +2,7 @@ const MessageBase = require('./message-base')
 
 class MessageSender extends MessageBase {
   constructor (config) {
+    config.name = `${config.address}-sender`
     super(config)
     this.sendMessage = this.sendMessage.bind(this)
   }

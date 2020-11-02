@@ -2,7 +2,6 @@
   const { MessageReceiver, MessageSender } = require('.')
 
   const config = {
-    connectionName: 'ffc-demo-claim-service',
     host: process.env.AZURE_SERVICE_BUS_HOST,
     username: process.env.AZURE_SERVICE_BUS_USERNAME,
     password: process.env.AZURE_SERVICE_BUS_PASSWORD,
@@ -12,7 +11,7 @@
   }
 
   const messageAction = function (message) {
-    console.log(message)
+    console.log(message.body)
   }
 
   const message = {

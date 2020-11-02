@@ -3,6 +3,7 @@ const MessageBase = require('./message-base')
 
 class MessageReceiver extends MessageBase {
   constructor (config, action) {
+    config.name = `${config.address}-receiver`
     super(config)
     this.receiverHandler = this.receiverHandler.bind(this)
     this.action = action
