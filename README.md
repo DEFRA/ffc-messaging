@@ -2,6 +2,16 @@
 
 Messaging npm module for FFC services
 
+## Usage
+
+## Sending a message
+
+```
+
+```
+
+## Receiving a message
+
 ## Licence
 
 THIS INFORMATION IS LICENSED UNDER THE CONDITIONS OF THE OPEN GOVERNMENT

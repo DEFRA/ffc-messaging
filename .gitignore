@@ -3,6 +3,7 @@
 .npm/
 .standard-v12-cache/
 .vscode
+.env
 node_modules
 npm-debug.log
 test-output

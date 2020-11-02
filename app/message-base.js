@@ -1,10 +1,16 @@
 const { ServiceBusClient } = require('@azure/service-bus')
+const auth = require('@azure/ms-rest-nodeauth')
 
 class MessageBase {
-  constructor (name, config) {
-    this.name = name
-    this.sbClient = ServiceBusClient.createFromConnectionString(config.connectionString)
-    this.entityClient = this.createEntityClient(config)
+  constructor (config) {
+    this.connectionName = config.connectionName
+    this.config = config
+  }
+
+  async connect () {
+    const credentials = this.config.usePodIdentity ? await auth.loginWithVmMSI({ resource: 'https://servicebus.azure.net' }) : undefined
+    this.sbClient = credentials ? ServiceBusClient.createFromAadTokenCredentials(this.config.host, this.config.credentials) : ServiceBusClient.createFromConnectionString(`Endpoint=sb://${this.config.host}/;SharedAccessKeyName=${this.config.username};SharedAccessKey=${this.config.password}`)
+    this.entityClient = this.createEntityClient(this.config)
   }
 
   createEntityClient (config) {
@@ -21,7 +27,7 @@ class MessageBase {
   async closeConnection () {
     await this.entityClient.close()
     await this.sbClient.close()
-    console.log(`${this.name} connection closed`)
+    console.log(`${this.connectionName} connection closed`)
   }
 }
 
