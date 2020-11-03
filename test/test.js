@@ -1,5 +1,5 @@
 (async function () {
-  const { MessageReceiver, MessageSender } = require('.')
+  const { MessageReceiver, MessageSender } = require('..')
 
   const config = {
     host: process.env.AZURE_SERVICE_BUS_HOST,

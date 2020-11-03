@@ -15,15 +15,19 @@ class MessageReceiver extends MessageBase {
     this.receiver.registerMessageHandler(this.receiverHandler, this.receiverError)
   }
 
-  receiverError (error) {
-    console.error(error)
+  receiverError (err) {
+    console.error(err)
+    throw err
   }
 
   async receiverHandler (message) {
     try {
       await this.action(message)
+      message.complete()
     } catch (err) {
       console.error(`${this.connectionName} failed to process message: `, err)
+      message.abandon()
+      throw err
     }
   }
 
