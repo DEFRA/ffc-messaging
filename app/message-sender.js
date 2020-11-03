@@ -12,9 +12,7 @@ class MessageSender extends MessageBase {
     try {
       await sender.send({
         body: message,
-        userProperties: {
-          type: 'claim.new'
-        }
+        contentType: 'application/json'
       })
     } catch (err) {
       console.error(`${this.connectionName} failed to send message: `, err)
