@@ -21,14 +21,7 @@ class MessageReceiver extends MessageBase {
   }
 
   async receiverHandler (message) {
-    try {
-      await this.action(message)
-      message.complete()
-    } catch (err) {
-      console.error(`${this.connectionName} failed to process message: `, err)
-      message.abandon()
-      throw err
-    }
+    await this.action(message)
   }
 
   async closeConnection () {
