@@ -26,6 +26,7 @@ class MessageSender extends MessageBase {
   enrichMessage (message) {
     return {
       body: message.body,
+      correlationId: message.correlationId,
       userProperties: {
         subject: message.subject,
         type: message.type,

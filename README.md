@@ -52,6 +52,8 @@ Message objects must follow the below structure.
 
 `sender` - Name of the service sending the message.  For example, `ffc-demo-claim-service`
 
+`correlationId` - Optional, if distributed tracing through Application Insights is required.
+
 
 #### Example
 
