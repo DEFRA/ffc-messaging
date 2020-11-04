@@ -10,10 +10,7 @@ class MessageSender extends MessageBase {
   async sendMessage (message) {
     const sender = this.entityClient.createSender()
     try {
-      await sender.send({
-        body: message,
-        contentType: 'application/json'
-      })
+      await sender.send(message)
     } catch (err) {
       console.error(`${this.connectionName} failed to send message: `, err)
       throw err
