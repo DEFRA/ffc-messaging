@@ -4,6 +4,12 @@ Messaging npm module for FFC services
 
 ## Usage
 
+### Installation
+
+```
+npm install --save defra/ffc-messaging#main
+```
+
 ### Configuration
 
 `host` - Azure Service Bus namespace, for example, `myservicebus.servicebus.windows.net`
