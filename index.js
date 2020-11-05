@@ -1,7 +1,7 @@
-const MessageSender = require('./app/message-sender')
-const MessageReceiver = require('./app/message-receiver')
+const messaging = require('./app/messaging')
+const appInsights = require('./app/app-insights')
 
 module.exports = {
-  MessageSender,
-  MessageReceiver
+  messaging,
+  appInsights
 }

@@ -1,6 +1,6 @@
 const MessageBase = require('./message-base')
 const messageSchema = require('./message-schema')
-const logTraceMessage = require('./log-trace-message')
+const { logTraceMessage } = require('../app-insights')
 
 class MessageSender extends MessageBase {
   constructor (config) {

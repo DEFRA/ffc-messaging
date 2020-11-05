@@ -1,6 +1,6 @@
 const { ReceiveMode } = require('@azure/service-bus')
 const MessageBase = require('./message-base')
-const logTraceMessage = require('./log-trace-message')
+const { logTraceMessage } = require('../app-insights')
 
 class MessageReceiver extends MessageBase {
   constructor (config, action) {
