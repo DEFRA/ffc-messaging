@@ -1,6 +1,6 @@
 {
   "name": "ffc-messaging",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Messaging npm module for FFC services",
   "main": "index.js",
   "repository": {
