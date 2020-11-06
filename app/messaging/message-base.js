@@ -9,7 +9,7 @@ class MessageBase {
 
   async connect () {
     const credentials = this.config.usePodIdentity ? await auth.loginWithVmMSI({ resource: 'https://servicebus.azure.net' }) : undefined
-    this.sbClient = credentials ? ServiceBusClient.createFromAadTokenCredentials(this.config.host, this.config.credentials) : ServiceBusClient.createFromConnectionString(`Endpoint=sb://${this.config.host}/;SharedAccessKeyName=${this.config.username};SharedAccessKey=${this.config.password}`)
+    this.sbClient = this.config.usePodIdentity ? await ServiceBusClient.createFromAadTokenCredentials(this.config.host, credentials) : ServiceBusClient.createFromConnectionString(`Endpoint=sb://${this.config.host}/;SharedAccessKeyName=${this.config.username};SharedAccessKey=${this.config.password}`)
     this.entityClient = this.createEntityClient(this.config)
   }
 
