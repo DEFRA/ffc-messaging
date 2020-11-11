@@ -1,7 +1,5 @@
-const appInsights = require('applicationinsights')
-
-module.exports = (message) => {
-  if (appInsights.defaultClient !== undefined) {
+module.exports = (appInsights, message) => {
+  if (appInsights && appInsights.defaultClient) {
     appInsights.defaultClient.trackException({ message })
   }
 }

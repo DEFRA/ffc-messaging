@@ -4,6 +4,7 @@ const auth = require('@azure/ms-rest-nodeauth')
 class MessageBase {
   constructor (config) {
     this.connectionName = config.name
+    this.appInsights = config.appInsights
     this.config = config
   }
 

@@ -19,7 +19,6 @@
   "dependencies": {
     "@azure/ms-rest-nodeauth": "^3.0.6",
     "@azure/service-bus": "^1.1.10",
-    "applicationinsights": "^1.8.8",
     "joi": "^17.3.0"
   },
   "devDependencies": {

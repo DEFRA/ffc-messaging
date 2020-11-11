@@ -14,7 +14,7 @@ class MessageSender extends MessageBase {
     try {
       await messageSchema.validateAsync(message)
       message = this.enrichMessage(message)
-      logTraceMessage(this.connectionName)
+      logTraceMessage(this.appInsights, this.connectionName)
       await sender.send(message)
     } catch (err) {
       console.error(`${this.connectionName} failed to send message: `, err)
