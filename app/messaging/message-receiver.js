@@ -1,6 +1,6 @@
 const { ReceiveMode } = require('@azure/service-bus')
 const MessageBase = require('./message-base')
-const { logTraceMessage, trackException } = require('../app-insights')
+const { trackTrace, trackException } = require('../app-insights')
 
 class MessageReceiver extends MessageBase {
   constructor (config, action) {
@@ -23,7 +23,7 @@ class MessageReceiver extends MessageBase {
   }
 
   async receiverHandler (message) {
-    logTraceMessage(this.appInsights, this.connectionName)
+    trackTrace(this.appInsights, this.connectionName)
     await this.action(message)
   }
 

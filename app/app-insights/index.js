@@ -1,7 +1,7 @@
-const logTraceMessage = require('./log-trace-message')
+const trackTrace = require('./track-trace')
 const trackException = require('./track-exception')
 
 module.exports = {
-  logTraceMessage,
+  trackTrace,
   trackException
 }
