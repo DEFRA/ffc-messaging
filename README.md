@@ -38,7 +38,8 @@ const config = {
   password: 'mySharedAccessKey,
   address: 'mySubscription,
   type: 'subscription',
-  topic: 'myTopic'
+  topic: 'myTopic',
+  appInsights: require('applicationinsights')
 }
 ```
 
