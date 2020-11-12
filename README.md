@@ -7,7 +7,7 @@ Messaging npm module for FFC services
 ### Installation
 
 ```
-npm install --save defra/ffc-messaging#main
+npm install --save ffc-messaging
 ```
 
 ### Configuration
