@@ -26,6 +26,8 @@ npm install --save defra/ffc-messaging#main
 
 `topic` - Required for subscription connections only.  The name of the topic the subscription belongs to.
 
+`appInsights` - Application Insights module if logging is required
+
 #### Example
 
 ```
@@ -36,7 +38,8 @@ const config = {
   password: 'mySharedAccessKey,
   address: 'mySubscription,
   type: 'subscription',
-  topic: 'myTopic'
+  topic: 'myTopic',
+  appInsights: require('applicationinsights')
 }
 ```
 

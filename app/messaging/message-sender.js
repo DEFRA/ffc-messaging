@@ -1,6 +1,6 @@
 const MessageBase = require('./message-base')
 const messageSchema = require('./message-schema')
-const { logTraceMessage } = require('../app-insights')
+const { trackTrace } = require('../app-insights')
 
 class MessageSender extends MessageBase {
   constructor (config) {
@@ -14,7 +14,7 @@ class MessageSender extends MessageBase {
     try {
       await messageSchema.validateAsync(message)
       message = this.enrichMessage(message)
-      logTraceMessage(this.connectionName)
+      trackTrace(this.appInsights, this.connectionName)
       await sender.send(message)
     } catch (err) {
       console.error(`${this.connectionName} failed to send message: `, err)
