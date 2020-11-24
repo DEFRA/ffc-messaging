@@ -53,7 +53,7 @@ Message objects must follow the below structure.
 
 `subject` - Optional, if the body alone is not sufficient to give context to the recipient.  For example, `myImage.jpeg`.
 
-`sender` - Name of the service sending the message.  For example, `ffc-demo-claim-service`
+`source` - Name of the service sending the message.  For example, `ffc-demo-claim-service`
 
 `correlationId` - Optional, if distributed tracing through Application Insights is required.
 
@@ -65,7 +65,7 @@ const message = {
   body: { claimId: 1 },
   type: 'uk.gov.demo.claim.validated',
   subject: 'New Claim',
-  sender: 'ffc-demo-claim-service'
+  source: 'ffc-demo-claim-service'
 }
 ```
 ```
