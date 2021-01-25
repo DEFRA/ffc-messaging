@@ -1,4 +1,3 @@
-const { ReceiveMode } = require('@azure/service-bus')
 const MessageBase = require('./message-base')
 const { trackTrace, trackException } = require('../app-insights')
 
@@ -8,12 +7,40 @@ class MessageReceiver extends MessageBase {
     super(config)
     this.receiverHandler = this.receiverHandler.bind(this)
     this.action = action
+    this.receiver = config.type === 'subscription' ? this.sbClient.createReceiver(config.topic, config.address) : this.sbClient.createReceiver(config.address)
   }
 
-  async connect () {
-    await super.connect()
-    this.receiver = this.entityClient.createReceiver(ReceiveMode.peekLock)
-    this.receiver.registerMessageHandler(this.receiverHandler, this.receiverError)
+  async subscribe () {
+    await this.receiver.subscribe({
+      processMessage: this.receiverHandler,
+      processError: async (args) => {
+        this.receiverError(args.error)
+      }
+    })
+  }
+
+  async peakMessages (maxMessageCount) {
+    return await this.receiver.peekMessages(maxMessageCount)
+  }
+
+  async receiveMessages (maxMessageCount) {
+    return await this.receiver.receiveMessages(maxMessageCount)
+  }
+
+  async completeMessage (message) {
+    await this.receiver.completeMessage(message)
+  }
+
+  async deadLetterMessage (message) {
+    await this.receiver.deadLetter(message)
+  }
+
+  async abandonMessage (message) {
+    await this.receiver.abandonMessage(message)
+  }
+
+  async deferMessage (message) {
+    await this.receiver.deferMessage(message)
   }
 
   receiverError (err) {
