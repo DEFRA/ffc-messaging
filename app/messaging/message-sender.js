@@ -10,12 +10,12 @@ class MessageSender extends MessageBase {
     this.sender = this.sbClient.createSender(config.address)
   }
 
-  async sendMessage (message) {
+  async sendMessage (message, options = {}) {
     try {
       await messageSchema.validateAsync(message)
       message = this.enrichMessage(message)
       trackTrace(this.appInsights, this.connectionName)
-      await this.sender.sendMessages(message)
+      await this.sender.sendMessages(message, options)
     } catch (err) {
       console.error(`${this.connectionName} failed to send message: `, err)
       throw err
