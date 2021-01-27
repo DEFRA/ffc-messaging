@@ -19,11 +19,13 @@ class MessageSender extends MessageBase {
     } catch (err) {
       console.error(`${this.connectionName} failed to send message: `, err)
       throw err
-    } finally {
-      await this.sender.close()
-      await super.closeConnection()
     }
     return message
+  }
+
+  async closeConnection () {
+    await this.sender.close()
+    await super.closeConnection()
   }
 
   enrichMessage (message) {
