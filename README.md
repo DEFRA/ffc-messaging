@@ -14,7 +14,7 @@ npm install --save ffc-messaging
 
 `host` - Azure Service Bus namespace, for example, `myservicebus.servicebus.windows.net`
 
-`useCredentialChain` - Boolean value for whether to authenticate connection with [AAD Pod Identity](https://github.com/Azure/aad-pod-identity).  If `false`, then `username` and `password` are required.
+`useCredentialChain` - Boolean value for whether to authenticate connection with using Azure's credential chain.  For example, set this to true if you wish to use [AAD Pod Identity](https://github.com/Azure/aad-pod-identity).  If `false`, then `username` and `password` are required.
 
 `username` - Azure Service Bus Shared Access Key name for authentication.  Not required if `useCredentialChain` is `true`.
 
