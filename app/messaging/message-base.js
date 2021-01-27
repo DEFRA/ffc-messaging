@@ -6,8 +6,12 @@ class MessageBase {
     this.connectionName = config.name
     this.appInsights = config.appInsights
     this.config = config
-    const credentials = new DefaultAzureCredential()
-    this.sbClient = this.config.usePodIdentity ? new ServiceBusClient(this.config.host, credentials) : new ServiceBusClient(`Endpoint=sb://${this.config.host}/;SharedAccessKeyName=${this.config.username};SharedAccessKey=${this.config.password}`)
+    if (config.useCredentialChain) {
+      const credentials = new DefaultAzureCredential()
+      this.sbClient = new ServiceBusClient(this.config.host, credentials)
+    } else {
+      this.sbClient = new ServiceBusClient(`Endpoint=sb://${this.config.host}/;SharedAccessKeyName=${this.config.username};SharedAccessKey=${this.config.password}`)
+    }
   }
 
   async closeConnection () {
