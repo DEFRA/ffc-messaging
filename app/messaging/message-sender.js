@@ -1,5 +1,6 @@
 const MessageBase = require('./message-base')
 const messageSchema = require('./message-schema')
+const retry = require('../retry')
 const { trackTrace } = require('../app-insights')
 
 class MessageSender extends MessageBase {
@@ -11,16 +12,15 @@ class MessageSender extends MessageBase {
   }
 
   async sendMessage (message, options = {}) {
-    try {
-      await messageSchema.validateAsync(message)
-      message = this.enrichMessage(message)
-      trackTrace(this.appInsights, this.connectionName)
-      await this.sender.sendMessages(message, options)
-    } catch (err) {
-      console.error(`${this.connectionName} failed to send message: `, err)
-      throw err
-    }
+    await messageSchema.validateAsync(message)
+    message = this.enrichMessage(message)
+    trackTrace(this.appInsights, this.connectionName)
+    await retry(() => this.send(message, options))
     return message
+  }
+
+  async send (message, options) {
+    await this.sender.sendMessages(message, options)
   }
 
   async closeConnection () {
