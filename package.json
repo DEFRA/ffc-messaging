@@ -1,6 +1,6 @@
 {
   "name": "ffc-messaging",
-  "version": "2.0.0-pre.7",
+  "version": "2.0.0-pre.9",
   "description": "Messaging npm module for FFC services",
   "main": "index.js",
   "repository": {
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/DEFRA/ffc-messaging#readme",
   "dependencies": {
-    "@azure/identity": "^1.2.2",
+    "@azure/ms-rest-nodeauth": "^3.0.6",
     "@azure/service-bus": "^7.0.2",
     "joi": "^17.3.0"
   },

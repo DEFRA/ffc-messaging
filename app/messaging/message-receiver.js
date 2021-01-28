@@ -7,7 +7,11 @@ class MessageReceiver extends MessageBase {
     super(config)
     this.receiverHandler = this.receiverHandler.bind(this)
     this.action = action
-    this.receiver = config.type === 'subscription' ? this.sbClient.createReceiver(config.topic, config.address) : this.sbClient.createReceiver(config.address)
+  }
+
+  async connect () {
+    await super.connect()
+    this.receiver = this.config.type === 'subscription' ? this.sbClient.createReceiver(this.config.topic, this.config.address) : this.sbClient.createReceiver(this.config.address)
   }
 
   async subscribe () {
