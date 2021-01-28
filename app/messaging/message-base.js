@@ -16,7 +16,6 @@ class MessageBase {
 
   async closeConnection () {
     await this.sbClient.close()
-    console.log(`${this.connectionName} connection closed`)
   }
 }
 
