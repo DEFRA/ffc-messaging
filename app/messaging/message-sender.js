@@ -15,7 +15,7 @@ class MessageSender extends MessageBase {
     await messageSchema.validateAsync(message)
     message = this.enrichMessage(message)
     trackTrace(this.appInsights, this.connectionName)
-    await retry(() => this.send(message, options))
+    await retry(() => this.send(message, options), this.config.retries, this.config.retryWaitInMs, this.config.exponentialRetry)
     return message
   }
 
