@@ -14,7 +14,7 @@ npm install --save ffc-messaging
 
 `host` - Azure Service Bus namespace, for example, `myservicebus.servicebus.windows.net`
 
-`usePodIdentity` - Boolean value for whether to authenticate connection with [AAD Pod Identity](https://github.com/Azure/aad-pod-identity).  If `false`, then `username` and `password` are required.
+`useCredentialChain` - Boolean value for whether to authenticate connection with using Azure's credential chain.  For example, set this to true if you wish to use [AAD Pod Identity](https://github.com/Azure/aad-pod-identity).  If `false`, then `username` and `password` are required.
 
 `username` - Azure Service Bus Shared Access Key name for authentication.  Not required if `useCredentialChain` is `true`.
 
@@ -33,7 +33,7 @@ npm install --save ffc-messaging
 ```
 const config = {
   host: 'myservicebus.servicebus.windows.net',
-  usePodIdentity: false,
+  useCredentialChain: false,
   username: 'mySharedAccessKeyName',
   password: 'mySharedAccessKey,
   address: 'mySubscription,
@@ -70,7 +70,6 @@ const message = {
 ```
 ```
 const sender = new MessageSender(config)
-await sender.connect()
 await sender.sendMessage(message)
 
 // shutdown when needed
@@ -96,7 +95,6 @@ const action = function (message) {
 }
 
 const receiver = new MessageReceiver(config, action)
-await receiver.connect()
 await receiver.subscribe()
 
 // shutdown when needed
@@ -108,7 +106,6 @@ Single call to receive current messages messages.
 
 ```
 const receiver = new MessageReceiver(config, action)
-await receiver.connect()
 // receive a maximum of 10 messages
 messages = await receiver.receiveMessages(10)
 
@@ -135,7 +132,6 @@ Same as `receiveMessages` but does not mark the message as complete so it can st
 
 ```
 const receiver = new MessageReceiver(config, action)
-await receiver.connect()
 // receive a maximum of 10 messages
 messages = await receiver.peekMessages(10)
 

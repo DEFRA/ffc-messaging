@@ -7,11 +7,7 @@ class MessageSender extends MessageBase {
     config.name = `${config.address}-sender`
     super(config)
     this.sendMessage = this.sendMessage.bind(this)
-  }
-
-  async connect () {
-    await super.connect()
-    this.sender = this.sbClient.createSender(this.config.address)
+    this.sender = this.sbClient.createSender(config.address)
   }
 
   async sendMessage (message, options = {}) {
