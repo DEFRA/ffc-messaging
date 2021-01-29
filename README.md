@@ -28,11 +28,11 @@ npm install --save ffc-messaging
 
 `appInsights` - Application Insights module if logging is required
 
-`retries` - How many times should a sender try to send a message, defaulting to `3` if not supplied.  With Pod Identity and Azure Identity there is a scenario that the identity will not be allocated in time for it's usage which causes failure sending messages.  `3` is usually sufficient but can be increased if necessary.
+`retries` - How many times should a sender try to send a message, defaulting to `5` if not supplied.  With Pod Identity and Azure Identity there is a scenario that the identity will not be allocated in time for it's usage which causes failure sending messages.  `5` is usually sufficient but can be increased if necessary.
 
 `retryWaitInMs` - How long should a sender wait in milliseconds before trying to resend, defaulting to `500` if not supplied.
 
-`exponentialRetry` - Whether to exponentially retry, ie doubling the `retryWaitInMs` on every retry.  Defaulted to `true`.
+`exponentialRetry` - Whether to exponentially retry, ie doubling the `retryWaitInMs` on every retry.  Defaulted to `false`.
 
 #### Example
 
