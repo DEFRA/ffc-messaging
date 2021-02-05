@@ -1,3 +1,3 @@
-@Library('defra-library@psd-1137-add-npm') _
+@Library('defra-library@v-9') _
 
 buildNpm()
