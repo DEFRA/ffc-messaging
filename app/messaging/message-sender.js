@@ -5,7 +5,6 @@ const { trackTrace } = require('../app-insights')
 
 class MessageSender extends MessageBase {
   constructor (config) {
-    config.name = `${config.address}-sender`
     super(config)
     this.sendMessage = this.sendMessage.bind(this)
     this.sender = this.sbClient.createSender(config.address)
