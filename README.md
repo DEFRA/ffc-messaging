@@ -12,6 +12,8 @@ npm install --save ffc-messaging
 
 ### Configuration
 
+`name` - name of connection, if not supplied the address name will be used.  This value is also used in App Insights tracing
+
 `host` - Azure Service Bus namespace, for example, `myservicebus.servicebus.windows.net`
 
 `useCredentialChain` - Boolean value for whether to authenticate connection with using Azure's credential chain.  For example, set this to true if you wish to use [AAD Pod Identity](https://github.com/Azure/aad-pod-identity).  If `false`, then `username` and `password` are required.
