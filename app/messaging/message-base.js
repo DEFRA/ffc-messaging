@@ -3,7 +3,7 @@ const { DefaultAzureCredential } = require('@azure/identity')
 
 class MessageBase {
   constructor (config) {
-    this.connectionName = config.name
+    this.connectionName = config.name || config.address
     this.appInsights = config.appInsights
     this.config = config
     this.connect()
