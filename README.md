@@ -36,6 +36,8 @@ npm install --save ffc-messaging
 
 `exponentialRetry` - Whether to exponentially retry, ie doubling the `retryWaitInMs` on every retry.  Defaulted to `false`.
 
+`autoCompleteMessages` - (Subscriptions only - see below) Whether to auto complete messages once the action method has ran.  Defaults to `false`.
+
 #### Example
 
 ```
