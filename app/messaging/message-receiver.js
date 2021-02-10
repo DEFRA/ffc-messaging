@@ -15,6 +15,8 @@ class MessageReceiver extends MessageBase {
       processError: async (args) => {
         this.receiverError(args.error)
       }
+    }, {
+      autoCompleteMessages: this.config.autoCompleteMessages || false
     })
   }
 
