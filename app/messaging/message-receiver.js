@@ -33,7 +33,7 @@ class MessageReceiver extends MessageBase {
   }
 
   async deadLetterMessage (message) {
-    await this.receiver.deadLetter(message)
+    await this.receiver.deadLetterMessage(message)
   }
 
   async abandonMessage (message) {
