@@ -6,7 +6,7 @@ class MessageReceiver extends MessageBase {
     super(config)
     this.receiverHandler = this.receiverHandler.bind(this)
     this.action = action
-    this.receiver = this.createReceiver(config)
+    this.receiver = this.createReceiver(config).bind(this)
   }
 
   createReceiver (config) {
