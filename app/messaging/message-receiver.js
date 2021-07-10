@@ -6,7 +6,19 @@ class MessageReceiver extends MessageBase {
     super(config)
     this.receiverHandler = this.receiverHandler.bind(this)
     this.action = action
-    this.receiver = config.type === 'subscription' ? this.sbClient.createReceiver(config.topic, config.address) : this.sbClient.createReceiver(config.address)
+    this.receiver = this.createReceiver(config)
+  }
+
+  createReceiver (config) {
+    switch (config.type) {
+      case 'subscription':
+        return this.sbClient.createReceiver(config.topic, config.address)
+      case 'sessionQueue':
+        return this.sbClient.acceptSession(config.address, config.sessionId)
+      default:
+        // standard queue
+        return this.sbClient.createReceiver(config.address)
+    }
   }
 
   async subscribe () {
