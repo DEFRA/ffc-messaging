@@ -38,8 +38,6 @@ npm install --save ffc-messaging
 
 `autoCompleteMessages` - (Subscriptions only - see below) Whether to auto complete messages once the action method has ran.  Defaults to `false`.
 
-`sessionId` - For receivers that use sessions.
-
 #### Example
 
 ```
