@@ -5,5 +5,6 @@ module.exports = Joi.object({
   subject: Joi.string().allow(''),
   type: Joi.string().required(),
   source: Joi.string().required(),
-  correlationId: Joi.string().allow('')
+  correlationId: Joi.string().allow(''),
+  sessionId: Joi.string().allow('')
 })
