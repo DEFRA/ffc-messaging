@@ -38,6 +38,8 @@ npm install --save ffc-messaging
 
 `autoCompleteMessages` - (Subscriptions only - see below) Whether to auto complete messages once the action method has ran.  Defaults to `false`.
 
+`sessionId` - For receivers that use sessions.
+
 #### Example
 
 ```
@@ -66,7 +68,9 @@ Message objects must follow the below structure.
 
 `source` - Name of the service sending the message.  For example, `ffc-demo-claim-service`
 
-`correlationId` - Optional, if distributed tracing through Application Insights is required.
+`correlationId` - Optional, if distributed tracing is required.
+
+`sessionId` - Optional, if queue has sessions enabled.
 
 
 #### Example
@@ -98,7 +102,7 @@ await sender.sendMessage(message, options)
 There are multiple options for receiving a message.
 
 #### Subscribe
-Permanantely subscribe to all messages.  Automatically will handle any intermittant disconnects.
+Permanently subscribe to all messages.  Automatically will handle any intermittent disconnects.
 
 ```
 const action = function (message) {
