@@ -114,6 +114,19 @@ await receiver.subscribe()
 await receiver.closeConnection()
 ```
 
+#### Accept session
+Connect to a session.
+
+```
+
+const receiver = new MessageReceiver(config)
+await receiver.acceptSession(sessionId)
+messages = await receiver.receiveMessages(1)
+
+// shutdown when needed
+await receiver.closeConnection()
+```
+
 #### Receive
 Single call to receive current messages messages.
 
