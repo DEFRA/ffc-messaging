@@ -22,7 +22,7 @@ npm install --save ffc-messaging
 
 `password` - Azure Service Bus Shared Access Key value for authentication.  Not required if `useCredentialChain` is `true`.
 
-`type` - Azure Service Bus entity to connect to, allows `queue`, `topic` or `subscription`.
+`type` - Azure Service Bus entity to connect to, allows `queue`, `sessionQueue`, `topic` or `subscription`.
 
 `address` - Name of the Azure Service Bus queue, topic or subscription to connect to.
 
