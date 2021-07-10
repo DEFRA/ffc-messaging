@@ -35,6 +35,10 @@ class MessageReceiver extends MessageBase {
     this.receiver = await this.sbClient.acceptSession(this.config.address, sessionId)
   }
 
+  async acceptNextSession () {
+    this.receiver = await this.sbClient.acceptNextSession(this.config.address)
+  }
+
   async peekMessages (maxMessageCount, options = {}) {
     return await this.receiver.peekMessages(maxMessageCount, options)
   }

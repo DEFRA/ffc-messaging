@@ -115,12 +115,25 @@ await receiver.closeConnection()
 ```
 
 #### Accept session
-Connect to a session.
+Connect to a specified session.
 
 ```
 
 const receiver = new MessageReceiver(config)
 await receiver.acceptSession(sessionId)
+messages = await receiver.receiveMessages(1)
+
+// shutdown when needed
+await receiver.closeConnection()
+```
+
+#### Accept next session
+Connect to next session.
+
+```
+
+const receiver = new MessageReceiver(config)
+await receiver.acceptNextSession()
 messages = await receiver.receiveMessages(1)
 
 // shutdown when needed
