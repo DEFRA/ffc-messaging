@@ -31,6 +31,7 @@ class MessageSender extends MessageBase {
     return {
       body: message.body,
       correlationId: message.correlationId,
+      sessionId: message.sessionId,
       subject: message.subject,
       applicationProperties: {
         type: message.type,
