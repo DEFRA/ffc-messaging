@@ -7,19 +7,16 @@ class MessageReceiver extends MessageBase {
     this.receiverHandler = this.receiverHandler.bind(this)
     this.action = action
     this.receiver = this.createReceiver(config)
-    this.receiveMessages = this.receiveMessages.bind(this)
-    this.peekMessages = this.peekMessages.bind(this)
   }
 
   createReceiver (config) {
     switch (config.type) {
       case 'subscription':
         return this.sbClient.createReceiver(config.topic, config.address)
-      case 'sessionQueue':
-        return this.sbClient.acceptSession(config.address, config.sessionId)
-      default:
-        // standard queue
+      case 'queue':
         return this.sbClient.createReceiver(config.address)
+      default:
+        return undefined
     }
   }
 
@@ -32,6 +29,10 @@ class MessageReceiver extends MessageBase {
     }, {
       autoCompleteMessages: this.config.autoCompleteMessages || false
     })
+  }
+
+  async acceptSession (sessionId) {
+    this.receiver = await this.sbClient.acceptSession(this.config.address, sessionId)
   }
 
   async peekMessages (maxMessageCount, options = {}) {
