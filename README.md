@@ -64,7 +64,7 @@ Message objects must follow the below structure.
 
 `source` - Name of the service sending the message.  For example, `ffc-demo-claim-service`.
 
-In addition, any property as described in the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messages-payloads).
+In addition, any property as described in the [Microsoft documentation](https://docs.microsoft.com/en-gb/javascript/api/@azure/service-bus/servicebusmessage?view=azure-node-latest#properties).
 
 
 #### Example
