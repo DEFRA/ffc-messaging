@@ -62,9 +62,9 @@ Message objects must follow the below structure.
 
 `type` - Type of message using reverse DNS notation. For example, `uk.gov.demo.claim.validated`.
 
-`source` - Name of the service sending the message.  For example, `ffc-demo-claim-service`
+`source` - Name of the service sending the message.  For example, `ffc-demo-claim-service`.
 
-In addition, any property as described in the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messages-payloads)
+In addition, any property as described in the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messages-payloads).
 
 
 #### Example
