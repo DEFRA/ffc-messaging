@@ -62,13 +62,9 @@ Message objects must follow the below structure.
 
 `type` - Type of message using reverse DNS notation. For example, `uk.gov.demo.claim.validated`.
 
-`subject` - Optional, if the body alone is not sufficient to give context to the recipient.  For example, `myImage.jpeg`.
-
 `source` - Name of the service sending the message.  For example, `ffc-demo-claim-service`
 
-`correlationId` - Optional, if distributed tracing is required.
-
-`sessionId` - Optional, if queue has sessions enabled.
+In addition, any property as described in the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messages-payloads)
 
 
 #### Example

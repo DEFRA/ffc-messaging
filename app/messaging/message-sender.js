@@ -11,7 +11,7 @@ class MessageSender extends MessageBase {
   }
 
   async sendMessage (message, options = {}) {
-    await messageSchema.validateAsync(message)
+    await messageSchema.validateAsync(message, { allowUnknown: true })
     message = this.enrichMessage(message)
     trackTrace(this.appInsights, this.connectionName)
     await retry(() => this.send(message, options), this.config.retries, this.config.retryWaitInMs, this.config.exponentialRetry)
@@ -29,10 +29,7 @@ class MessageSender extends MessageBase {
 
   enrichMessage (message) {
     return {
-      body: message.body,
-      correlationId: message.correlationId,
-      sessionId: message.sessionId,
-      subject: message.subject,
+      ...message,
       applicationProperties: {
         type: message.type,
         source: message.source
