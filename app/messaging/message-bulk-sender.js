@@ -21,7 +21,7 @@ class MessageBulkSender extends MessageBase {
       if (!batch.tryAddMessage(enrichMessage)) {
         await retry(() => this.send(batch, options), this.config.retries, this.config.retryWaitInMs, this.config.exponentialRetry)
         batch = await this.sender.createMessageBatch()
-
+        console.log('sendBatchMessages', batch)
         if (!batch.tryAddMessage(enrichMessage)) {
           throw new Error('Message too big to fit in a batch!')
         }
