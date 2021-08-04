@@ -22,7 +22,7 @@ npm install --save ffc-messaging
 
 `password` - Azure Service Bus Shared Access Key value for authentication.  Not required if `useCredentialChain` is `true`.
 
-`type` - Azure Service Bus entity to connect to, allows `queue`, `topic` or `subscription`.
+`type` - Azure Service Bus entity to connect to, allows `queue`, `sessionQueue`, `topic` or `subscription`.
 
 `address` - Name of the Azure Service Bus queue, topic or subscription to connect to.
 
@@ -62,11 +62,9 @@ Message objects must follow the below structure.
 
 `type` - Type of message using reverse DNS notation. For example, `uk.gov.demo.claim.validated`.
 
-`subject` - Optional, if the body alone is not sufficient to give context to the recipient.  For example, `myImage.jpeg`.
+`source` - Name of the service sending the message.  For example, `ffc-demo-claim-service`.
 
-`source` - Name of the service sending the message.  For example, `ffc-demo-claim-service`
-
-`correlationId` - Optional, if distributed tracing through Application Insights is required.
+In addition, any property as described in the [Microsoft documentation](https://docs.microsoft.com/en-gb/javascript/api/@azure/service-bus/servicebusmessage?view=azure-node-latest#properties).
 
 
 #### Example
@@ -98,7 +96,7 @@ await sender.sendMessage(message, options)
 There are multiple options for receiving a message.
 
 #### Subscribe
-Permanantely subscribe to all messages.  Automatically will handle any intermittant disconnects.
+Permanently subscribe to all messages.  Automatically will handle any intermittent disconnects.
 
 ```
 const action = function (message) {
@@ -107,6 +105,32 @@ const action = function (message) {
 
 const receiver = new MessageReceiver(config, action)
 await receiver.subscribe()
+
+// shutdown when needed
+await receiver.closeConnection()
+```
+
+#### Accept session
+Connect to a specified session.
+
+```
+
+const receiver = new MessageReceiver(config)
+await receiver.acceptSession(sessionId)
+messages = await receiver.receiveMessages(1)
+
+// shutdown when needed
+await receiver.closeConnection()
+```
+
+#### Accept next session
+Connect to next session.
+
+```
+
+const receiver = new MessageReceiver(config)
+await receiver.acceptNextSession()
+messages = await receiver.receiveMessages(1)
 
 // shutdown when needed
 await receiver.closeConnection()

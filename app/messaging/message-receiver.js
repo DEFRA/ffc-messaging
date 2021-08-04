@@ -6,7 +6,18 @@ class MessageReceiver extends MessageBase {
     super(config)
     this.receiverHandler = this.receiverHandler.bind(this)
     this.action = action
-    this.receiver = config.type === 'subscription' ? this.sbClient.createReceiver(config.topic, config.address) : this.sbClient.createReceiver(config.address)
+    this.receiver = this.createReceiver(config)
+  }
+
+  createReceiver (config) {
+    switch (config.type) {
+      case 'subscription':
+        return this.sbClient.createReceiver(config.topic, config.address)
+      case 'queue':
+        return this.sbClient.createReceiver(config.address)
+      default:
+        return undefined
+    }
   }
 
   async subscribe () {
@@ -18,6 +29,14 @@ class MessageReceiver extends MessageBase {
     }, {
       autoCompleteMessages: this.config.autoCompleteMessages || false
     })
+  }
+
+  async acceptSession (sessionId) {
+    this.receiver = await this.sbClient.acceptSession(this.config.address, sessionId)
+  }
+
+  async acceptNextSession () {
+    this.receiver = await this.sbClient.acceptNextSession(this.config.address)
   }
 
   async peekMessages (maxMessageCount, options = {}) {
