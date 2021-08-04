@@ -1,6 +1,6 @@
 {
   "name": "ffc-messaging",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Messaging npm module for FFC services",
   "main": "index.js",
   "repository": {
@@ -9,7 +9,8 @@
   },
   "author": "Defra DDTS",
   "contributors": [
-    "John Watson john.watson2@rpa.gov.uk"
+    "John Watson john.watson2@rpa.gov.uk",
+    "Steve Dickinson steve.dickinson@defra.gov.uk"
   ],
   "license": "OGL-UK-3.0",
   "bugs": {
