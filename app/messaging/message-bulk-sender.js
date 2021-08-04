@@ -23,7 +23,7 @@ class MessageBulkSender extends MessageBase {
         batch = await this.sender.createMessageBatch()
 
         if (!batch.tryAddMessage(enrichMessage)) {
-          throw new Error('Message too big to fit in a batch')
+          throw new Error('Message too big to fit in a batch!')
         }
       }
     }
