@@ -97,13 +97,13 @@ await sender.sendMessage(message, options)
 const messages = [{
   body: { claimId: 1 },
   type: 'uk.gov.demo.claim.validated',
-  subject: 'New Claim',
+  subject: 'New Claim 1',
   source: 'ffc-demo-claim-service'
 },
 {
-  body: { claimId: 1 },
+  body: { claimId: 2 },
   type: 'uk.gov.demo.claim.validated',
-  subject: 'New Claim',
+  subject: 'New Claim 2',
   source: 'ffc-demo-claim-service'
 }]
 
