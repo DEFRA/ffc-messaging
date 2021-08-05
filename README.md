@@ -109,7 +109,7 @@ const messages = [{
 
 ```
 ```
-const sender = new MessageBulkSender(config)
+const sender = new MessageBatchSender(config)
 await sender.sendBatchMessages(messages)
 
 // shutdown when needed
