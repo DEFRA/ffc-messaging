@@ -110,7 +110,7 @@ const messages = [{
 ```
 ```
 const sender = new MessageBulkSender(config)
-await sender.sendBatchMessages(message)
+await sender.sendBatchMessages(messages)
 
 // shutdown when needed
 await sender.closeConnection()
