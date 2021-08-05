@@ -3,7 +3,7 @@ const messageSchema = require('./message-schema')
 const retry = require('../retry')
 const { trackTrace } = require('../app-insights')
 
-class MessageBulkSender extends MessageBase {
+class MessageBatchSender extends MessageBase {
   constructor (config) {
     super(config)
     this.sendBatchMessages = this.sendBatchMessages.bind(this)
@@ -51,4 +51,4 @@ class MessageBulkSender extends MessageBase {
   }
 }
 
-module.exports = MessageBulkSender
+module.exports = MessageBatchSender

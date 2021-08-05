@@ -1,9 +1,9 @@
 const appInsights = require('./app/app-insights')
-const { MessageReceiver, MessageSender, MessageBulkSender } = require('./app/messaging')
+const { MessageReceiver, MessageSender, MessageBatchSender } = require('./app/messaging')
 
 module.exports = {
   MessageSender,
   MessageReceiver,
-  MessageBulkSender,
+  MessageBatchSender,
   appInsights
 }

@@ -1,9 +1,9 @@
 const MessageReceiver = require('./message-receiver')
 const MessageSender = require('./message-sender')
-const MessageBulkSender = require('./message-bulk-sender')
+const MessageBatchSender = require('./message-batch-sender')
 
 module.exports = {
   MessageReceiver,
   MessageSender,
-  MessageBulkSender
+  MessageBatchSender
 }
