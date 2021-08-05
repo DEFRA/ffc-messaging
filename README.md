@@ -67,7 +67,7 @@ Message objects must follow the below structure.
 In addition, any property as described in the [Microsoft documentation](https://docs.microsoft.com/en-gb/javascript/api/@azure/service-bus/servicebusmessage?view=azure-node-latest#properties).
 
 
-#### Example
+#### Example Send Message
 
 ```
 const message = {
@@ -89,6 +89,37 @@ The `sendMessage` function can also receive all options applicable to Azure Serv
 
 ```
 await sender.sendMessage(message, options)
+```
+
+#### Example Send Batch Messages
+
+```
+const messages = [{
+  body: { claimId: 1 },
+  type: 'uk.gov.demo.claim.validated',
+  subject: 'New Claim 1',
+  source: 'ffc-demo-claim-service'
+},
+{
+  body: { claimId: 2 },
+  type: 'uk.gov.demo.claim.validated',
+  subject: 'New Claim 2',
+  source: 'ffc-demo-claim-service'
+}]
+
+```
+```
+const sender = new MessageBatchSender(config)
+await sender.sendBatchMessages(messages)
+
+// shutdown when needed
+await sender.closeConnection()
+```
+
+The `sendBatchMessages` function can also receive all options applicable to Azure Service Bus `sendMessages` as a parameter, see [Azure documentation](https://www.npmjs.com/package/@azure/service-bus).
+
+```
+await sender.sendBatchMessages(message, options)
 ```
 
 ### Receiving a message
