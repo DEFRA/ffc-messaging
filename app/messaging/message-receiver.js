@@ -28,6 +28,7 @@ class MessageReceiver extends MessageBase {
       }
     }, {
       autoCompleteMessages: this.config.autoCompleteMessages || false
+      maxConcurrentCalls: this.config.maxConcurrentCalls || 1
     })
   }
 
