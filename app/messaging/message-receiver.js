@@ -27,7 +27,8 @@ class MessageReceiver extends MessageBase {
         this.receiverError(args.error)
       }
     }, {
-      autoCompleteMessages: this.config.autoCompleteMessages || false
+      autoCompleteMessages: this.config.autoCompleteMessages || false,
+      maxConcurrentCalls: this.config.maxConcurrentCalls || 1
     })
   }
 

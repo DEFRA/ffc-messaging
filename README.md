@@ -38,6 +38,8 @@ npm install --save ffc-messaging
 
 `autoCompleteMessages` - (Subscriptions only - see below) Whether to auto complete messages once the action method has ran.  Defaults to `false`.
 
+`maxConcurrentCalls` - (Subscriptions only - see below) Maximum number of messages received from message handler without being settled.  Defaults to `1`.
+
 #### Example
 
 ```
