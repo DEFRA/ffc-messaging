@@ -20,10 +20,10 @@ class MessageReceiver extends MessageBase {
     }
   }
 
-  async subscribe (processError = this.receiverError) {
+  async subscribe (processError) {
     await this.receiver.subscribe({
       processMessage: this.receiverHandler,
-      processError
+      processError: processError ?? this.receiverError
     }, {
       autoCompleteMessages: this.config.autoCompleteMessages || false,
       maxConcurrentCalls: this.config.maxConcurrentCalls || 1
