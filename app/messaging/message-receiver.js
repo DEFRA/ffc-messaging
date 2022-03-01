@@ -41,11 +41,11 @@ class MessageReceiver extends MessageBase {
   }
 
   async peekMessages (maxMessageCount, options = {}) {
-    return await this.receiver.peekMessages(maxMessageCount, options)
+    return this.receiver.peekMessages(maxMessageCount, options)
   }
 
   async receiveMessages (maxMessageCount, options = {}) {
-    return await this.receiver.receiveMessages(maxMessageCount, options)
+    return this.receiver.receiveMessages(maxMessageCount, options)
   }
 
   async completeMessage (message) {
