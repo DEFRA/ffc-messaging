@@ -20,12 +20,10 @@ class MessageReceiver extends MessageBase {
     }
   }
 
-  async subscribe () {
+  async subscribe (processError = this.receiverError) {
     await this.receiver.subscribe({
       processMessage: this.receiverHandler,
-      processError: async (args) => {
-        this.receiverError(args.error)
-      }
+      processError
     }, {
       autoCompleteMessages: this.config.autoCompleteMessages || false,
       maxConcurrentCalls: this.config.maxConcurrentCalls || 1
@@ -64,10 +62,10 @@ class MessageReceiver extends MessageBase {
     await this.receiver.deferMessage(message)
   }
 
-  receiverError (err) {
-    trackException(this.appInsights, err)
-    console.error(err)
-    throw err
+  receiverError (args) {
+    trackException(this.appInsights, args.error)
+    console.error(args.error)
+    throw args.error
   }
 
   async receiverHandler (message) {
