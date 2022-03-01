@@ -21,6 +21,7 @@ class MessageReceiver extends MessageBase {
   }
 
   async subscribe (processError) {
+    console.log(processError)
     await this.receiver.subscribe({
       processMessage: this.receiverHandler,
       processError: processError ?? this.receiverError
