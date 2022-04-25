@@ -3,7 +3,7 @@ const AdministrationBase = require('./administration-base')
 class SubscriptionProperties extends AdministrationBase {
   constructor (config) {
     super(config)
-    this.getSubscriptionDetails = this.getSubscriptionDetails.bind(this)
+    this.subscriptionDetails = this.subscriptionDetails.bind(this)
   }
 
   async subscriptionDetails (topicName, subscriptionName) {
