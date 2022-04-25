@@ -21,10 +21,6 @@ class AdministrationBase {
   getCredentials () {
     return new DefaultAzureCredential()
   }
-
-  async closeConnection () {
-    await this.sbAdministrationClient.close()
-  }
 }
 
 module.exports = AdministrationBase
