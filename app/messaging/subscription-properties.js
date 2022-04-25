@@ -6,7 +6,7 @@ class SubscriptionProperties extends AdministrationBase {
     this.getSubscriptionDetails = this.getSubscriptionDetails.bind(this)
   }
 
-  async getSubscriptionDetails (topicName, subscriptionName) {
+  async subscriptionDetails (topicName, subscriptionName) {
     const subscriptionProperties = await this.sbAdministrationClient.getSubscriptionRuntimeProperties(topicName, subscriptionName)
     return { activeMessageCount: subscriptionProperties.activeMessageCount, deadLetterMessageCount: subscriptionProperties.deadLetterMessageCount }
   }
