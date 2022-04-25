@@ -13,6 +13,8 @@ class MessageReceiver extends MessageBase {
     switch (config.type) {
       case 'subscription':
         return this.sbClient.createReceiver(config.topic, config.address)
+      case 'subscription-deadletter':
+        return this.sbClient.createReceiver(config.topic, config.address, { subQueueType: 'deadLetter' })
       case 'queue':
         return this.sbClient.createReceiver(config.address)
       default:
