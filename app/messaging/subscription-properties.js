@@ -10,6 +10,10 @@ class SubscriptionProperties extends AdministrationBase {
     const subscriptionProperties = await this.sbAdministrationClient.getSubscriptionRuntimeProperties(topicName, subscriptionName)
     return { activeMessageCount: subscriptionProperties.activeMessageCount, deadLetterMessageCount: subscriptionProperties.deadLetterMessageCount }
   }
+
+  async closeConnection () {
+    await super.closeConnection()
+  }
 }
 
 module.exports = SubscriptionProperties
