@@ -65,7 +65,6 @@ class MessageReceiver extends MessageBase {
   receiverError (args) {
     trackException(this.appInsights, args.error)
     console.error(args.error)
-    throw args.error
   }
 
   async receiverHandler (message) {
