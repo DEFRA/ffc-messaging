@@ -33,7 +33,7 @@ class MessageSender extends MessageBase {
       applicationProperties: {
         type: message.type,
         source: message.source,
-        ...message.applicationProperties
+        ...message.metadata
       }
     }
   }

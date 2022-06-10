@@ -66,6 +66,8 @@ Message objects must follow the below structure.
 
 `source` - Name of the service sending the message.  For example, `ffc-demo-claim-service`.
 
+`metadata` - Optional object containing metadata to be added to message.
+
 In addition, any property as described in the [Microsoft documentation](https://docs.microsoft.com/en-gb/javascript/api/@azure/service-bus/servicebusmessage?view=azure-node-latest#properties).
 
 
@@ -76,7 +78,10 @@ const message = {
   body: { claimId: 1 },
   type: 'uk.gov.demo.claim.validated',
   subject: 'New Claim',
-  source: 'ffc-demo-claim-service'
+  source: 'ffc-demo-claim-service',
+  metadata: {
+    myCustomProperty: 'my-value'
+  }
 }
 ```
 ```
