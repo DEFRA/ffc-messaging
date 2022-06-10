@@ -32,7 +32,8 @@ class MessageSender extends MessageBase {
       ...message,
       applicationProperties: {
         type: message.type,
-        source: message.source
+        source: message.source,
+        ...message.applicationProperties
       }
     }
   }
