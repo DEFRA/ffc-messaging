@@ -13,6 +13,8 @@ class MessageBase {
     if (this.config.useCredentialChain) {
       const credentials = this.getCredentials()
       this.sbClient = new ServiceBusClient(this.config.host, credentials)
+    } else if (this.config.connectionString) {
+      this.sbClient = new ServiceBusClient(this.config.connectionString)
     } else {
       this.sbClient = new ServiceBusClient(`Endpoint=sb://${this.config.host}/;SharedAccessKeyName=${this.config.username};SharedAccessKey=${this.config.password}`)
     }

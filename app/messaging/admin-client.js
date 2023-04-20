@@ -13,6 +13,8 @@ class AdminClient {
     if (this.config.useCredentialChain) {
       const credentials = this.getCredentials()
       this.sbClient = new ServiceBusAdministrationClient(this.config.host, credentials)
+    } else if (this.config.connectionString) {
+      this.sbClient = new ServiceBusAdministrationClient(this.config.connectionString)
     } else {
       this.sbClient = new ServiceBusAdministrationClient(`Endpoint=sb://${this.config.host}/;SharedAccessKeyName=${this.config.username};SharedAccessKey=${this.config.password}`)
     }
