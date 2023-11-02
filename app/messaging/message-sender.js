@@ -22,6 +22,10 @@ class MessageSender extends MessageBase {
     await this.sender.sendMessages(message, options)
   }
 
+  async scheduleMessage (message, scheduleTimeUtc) {
+    await this.sender.scheduleMessages(message, scheduleTimeUtc)
+  }
+
   async closeConnection () {
     await this.sender.close()
     await super.closeConnection()
