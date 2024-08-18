@@ -18,6 +18,8 @@ npm install --save ffc-messaging
 
 `useCredentialChain` - Boolean value for whether to authenticate connection with using Azure's credential chain.  For example, set this to true if you wish to use [AAD Pod Identity](https://github.com/Azure/aad-pod-identity).  If `false`, then `username` and `password` or `connectionString` are required.
 
+`managedIdentityClientId` - Client Id of the Workload Identity.  Required if using Workload Identity instead of Pod Identity or connection string.
+
 `connectionString` - Azure Service Bus connection string.  If provided, `username` and `password` are ignored.
 
 `username` - Azure Service Bus Shared Access Key name for authentication.  Not required if `useCredentialChain` is `true` or `connectionString` is provided.
