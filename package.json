@@ -20,7 +20,7 @@
   "dependencies": {
     "@azure/identity": "4.2.1",
     "@azure/service-bus": "7.9.4",
-    "joi": "17.11.0"
+    "joi": "17.13.3"
   },
   "devDependencies": {
     "standard": "17.1.0"
