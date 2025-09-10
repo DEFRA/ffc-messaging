@@ -44,6 +44,7 @@ npm install --save ffc-messaging
 
 `maxConcurrentCalls` - (Subscriptions only - see below) Maximum number of messages received from message handler without being settled.  Defaults to `1`.
 
+`useEmulator` - `true` if you want to use service bus emulator
 #### Example
 
 ```
@@ -56,7 +57,8 @@ const config = {
   type: 'subscription',
   topic: 'myTopic',
   appInsights: require('applicationinsights'),
-  retries: 5
+  retries: 5,
+  useEmulator: false
 }
 ```
 
