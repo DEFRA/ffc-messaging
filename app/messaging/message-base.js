@@ -2,14 +2,14 @@ const { ServiceBusClient } = require('@azure/service-bus')
 const { DefaultAzureCredential } = require('@azure/identity')
 
 class MessageBase {
-  constructor(config) {
+  constructor (config) {
     this.connectionName = config.name || config.address
     this.appInsights = config.appInsights
     this.config = config
     this.connect()
   }
 
-  connect() {
+  connect () {
     if (this.config.useCredentialChain) {
       const credentials = this.getCredentials()
       this.sbClient = new ServiceBusClient(this.config.host, credentials)
@@ -20,11 +20,11 @@ class MessageBase {
       if (this.config.useEmulator) {
         useDevelopmentEmulator = ';UseDevelopmentEmulator=true'
       }
-      this.sbClient = new ServiceBusClient(`Endpoint=sb://${this.config.host}/;SharedAccessKeyName=${this.config.username};SharedAccessKey=${this.config.password}${useDevelopmentEmulator}`);
+      this.sbClient = new ServiceBusClient(`Endpoint=sb://${this.config.host}/;SharedAccessKeyName=${this.config.username};SharedAccessKey=${this.config.password}${useDevelopmentEmulator}`)
     }
   }
 
-  getCredentials() {
+  getCredentials () {
     if (this.config.managedIdentityClientId) {
       return new DefaultAzureCredential({ managedIdentityClientId: this.config.managedIdentityClientId })
     } else {
@@ -32,7 +32,7 @@ class MessageBase {
     }
   }
 
-  async closeConnection() {
+  async closeConnection () {
     await this.sbClient.close()
   }
 }
