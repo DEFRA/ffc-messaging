@@ -15,7 +15,9 @@ module.exports = {
     '<rootDir>/test-output/',
     '<rootDir>/test/',
     '<rootDir>/jest.config.js',
-    '<rootDir>/app/config'
+    '<rootDir>/app/config',
+    '<rootDir>/jest.setup.js',
+    '<rootDir>/eslint.config.js'
   ],
   modulePathIgnorePatterns: [
     'node_modules'
