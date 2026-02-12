@@ -103,6 +103,35 @@ describe('MessageBase', () => {
     )
   })
 
+  test('should NOT include UseDevelopmentEmulator flag when useEmulator is false', () => {
+    const config = {
+      name: 'test-connection',
+      host: 'test-host',
+      username: 'test-user',
+      password: 'test-password',
+      useEmulator: false
+    }
+
+    expect(() => new MessageBase(config)).not.toThrow()
+    expect(ServiceBusClient).toHaveBeenCalledWith(
+      'Endpoint=sb://test-host/;SharedAccessKeyName=test-user;SharedAccessKey=test-password'
+    )
+  })
+
+  test('should NOT include UseDevelopmentEmulator flag when useEmulator is undefined', () => {
+    const config = {
+      name: 'test-connection',
+      host: 'test-host',
+      username: 'test-user',
+      password: 'test-password'
+    }
+
+    expect(() => new MessageBase(config)).not.toThrow()
+    expect(ServiceBusClient).toHaveBeenCalledWith(
+      'Endpoint=sb://test-host/;SharedAccessKeyName=test-user;SharedAccessKey=test-password'
+    )
+  })
+
   test('should close connection', async () => {
     const mockClose = jest.fn().mockResolvedValue(undefined)
     const config = {
