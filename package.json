@@ -1,8 +1,14 @@
 {
   "name": "ffc-messaging",
-  "version": "2.10.3",
+  "version": "2.10.4",
   "description": "Messaging npm module for FCP services",
   "main": "index.js",
+  "scripts": {
+    "test": "jest --runInBand --forceExit",
+    "test:unit": "PORT=0 node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPatterns=test/unit",    "test:watch": "jest --coverage=false --onlyChanged --watch --runInBand",
+    "test:lint": "eslint",
+    "test:lint:fix": "eslint --fix"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DEFRA/ffc-messaging.git"
@@ -10,7 +16,8 @@
   "author": "Defra DDTS",
   "contributors": [
     "John Watson john.watson2@rpa.gov.uk",
-    "Steve Dickinson steve.dickinson@defra.gov.uk"
+    "Steve Dickinson steve.dickinson@defra.gov.uk",
+    "Sam Plackett samuel.plackett@atos.net"
   ],
   "license": "OGL-UK-3.0",
   "bugs": {
@@ -23,6 +30,9 @@
     "joi": "17.13.3"
   },
   "devDependencies": {
-    "standard": "17.1.2"
+    "eslint": "9.39.2",
+    "jest": "29.7.0",
+    "jest-junit": "14.0.0",
+    "neostandard": "0.12.2"
   }
 }
