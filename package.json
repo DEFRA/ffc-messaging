@@ -18,7 +18,8 @@
   "contributors": [
     "John Watson john.watson2@rpa.gov.uk",
     "Steve Dickinson steve.dickinson@defra.gov.uk",
-    "Sam Plackett samuel.plackett@atos.net"
+    "Sam Plackett samuel.plackett@atos.net",
+    "Leigh Godson leigh.godson@atos.ai"
   ],
   "license": "OGL-UK-3.0",
   "bugs": {
@@ -28,7 +29,7 @@
   "dependencies": {
     "@azure/identity": "4.13.1",
     "@azure/service-bus": "7.9.5",
-    "joi": "17.13.3"
+    "joi": "18.2.1"
   },
   "devDependencies": {
     "eslint": "9.39.2",
